@@ -1,5 +1,6 @@
 # Test Assigment Weather Rest API
 
+5 Day / 3 Hour Forecast API was used - https://openweathermap.org/forecast5
 
 ## Getting started
 
