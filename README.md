@@ -4,6 +4,10 @@
 
 **1st Docker:** postgressql db 
 
+BeeHeroTask database:
+- table forecastapp_cities (city_id(pk), city_name, country, lat, lon)
+- table forecastapp_forecast (id(pk), f_dt, temp, feels_like, humidity, city_id(fk=forecastapp_cities.city_id))
+
 **2nd Docker:** web app with 3 endpoints (with help of FastAPI, pandas, sqlalchemy)
 
 **populate_db.py** script which populates postgressql db (5 Day / 3 Hour Forecast API was used - https://openweathermap.org/forecast5)
