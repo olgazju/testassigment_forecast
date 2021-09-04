@@ -63,7 +63,7 @@ Example: "[{\"rank\":1,\"city_name\":\"Jerusalem\",\"feels_like\":21.12},{\"rank
 
 - Save password to DB and Weather API token into Google Cloud’s Secret Manager
 
-- Add Airflow instance in docker and make populate_db.py as scheduled task inside Airflow DAG
+- Add Airflow instance in docker and make populate_db.py as scheduled task inside Airflow DAG (also email on failing)
 
 - Add ingested_time to both tables and support of primary keys for adding new cities into scheduled task inside Airflow DAG
 
