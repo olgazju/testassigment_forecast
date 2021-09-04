@@ -41,3 +41,12 @@ http://0.0.0.0:8000/lower_humidity_point
     should be low to high).
 
 http://0.0.0.0:8000/rank_cities_by_feels_like
+
+6. What I would add:
+
+- Save password to DB and Weather API token into Google Cloud’s Secret Manager
+
+- Add Airflow instance in docker and make populate_db.py as scheduled task inside Airflow DAG
+
+- Add tests
+

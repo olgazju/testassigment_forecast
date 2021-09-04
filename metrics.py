@@ -47,23 +47,20 @@ alchemyEngine = create_engine('postgresql+psycopg2://{}:{}@{}/{}'.format(os.envi
 
 def run_query_in_pandas(query: str):
 
-    dbConnection = alchemyEngine.connect()
-
     try:
+        with alchemyEngine.connect() as dbConnection:
 
-        result = pds.read_sql(query, 
-                            dbConnection)
+            result = pds.read_sql(query, 
+                                dbConnection)
 
-        print(result)
-        return result.to_json(orient='records', date_format='iso')
+            print(result)
+            return result.to_json(orient='records', date_format='iso')
     except Exception as ex:  
         print(ex)
-        return {}
+        return {"error": ex}
     else:
         print("All metrics were calculated successfully.")
 
-    finally:
-        dbConnection.close()
 
 
 def avg_temp():
