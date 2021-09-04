@@ -33,14 +33,20 @@ You should see the next message: PostgreSQL Tables has been populated successful
 
 http://0.0.0.0:8000/avg_tmp_per_city_per_day
 
+Example: "[{\"city_name\":\"Eilat\",\"date\":\"2021-09-04T00:00:00.000Z\",\"avg_temp\":32.53},{\"city_name\":\"Eilat\",\"date\":\"2021-09-05T00:00:00.000Z\",\"avg_temp\":31.76},{\"city_name\":\"Eilat\",\"date\":\"2021-09-06T00:00:00.000Z\",\"avg_temp\":30.53} ...
+
 - Lowest humidity point (place + time).
 
 http://0.0.0.0:8000/lower_humidity_point
+
+Example: "[{\"city_name\":\"Eilat\",\"f_dt\":\"2021-09-09T12:00:00.000Z\",\"humidity\":18.0}]"
 
 - Rank the cities by their last (most recent) “feels_like” value (order
     should be low to high).
 
 http://0.0.0.0:8000/rank_cities_by_feels_like
+
+Example: "[{\"rank\":1,\"city_name\":\"Jerusalem\",\"feels_like\":21.12},{\"rank\":2,\"city_name\":\"Haifa\",\"feels_like\":26.29},{\"rank\":3,\"city_name\":\"Tiberias\",\"feels_like\":26.43},{\"rank\":4,\"city_name\":\"Tel Aviv District\",\"feels_like\":28.53},{\"rank\":5,\"city_name\":\"Eilat\",\"feels_like\":30.06}]"
 
 6. What I would add:
 
