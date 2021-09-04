@@ -26,7 +26,7 @@ QUERIES = {'avg_temp': '''SELECT
                                  WHERE RowNum = 1
                                   ''',
 
-            'rank_cities': ''' SELECT city_name, feels_like
+            'rank_cities': ''' SELECT RANK() OVER(ORDER BY feels_like) as rank, city_name, feels_like
                                  FROM
                                  (
                                      SELECT ROW_NUMBER() OVER (PARTITION BY city_id ORDER BY f_dt DESC) as RowNum, *
@@ -34,7 +34,7 @@ QUERIES = {'avg_temp': '''SELECT
                                  ) as forecast 
                                  join \"forecastapp_cities\" as cities 
                                     on forecast.city_id=cities.city_id
-                                 WHERE RowNum = 1 order by feels_like'''
+                                 WHERE RowNum = 1 '''
           }
 
 

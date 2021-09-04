@@ -1,8 +1,9 @@
 import requests
 from datetime import datetime
-from sqlalchemy import create_engine
+from sqlalchemy import create_engine, MetaData, Table, Column, Integer, String, Float, DateTime, ForeignKey
 import psycopg2
 import pandas as pd
+
 
 
 API_KEY = "30097314c03d379548cdbfb826584314"
@@ -56,9 +57,37 @@ forecast_df = pd.DataFrame(weather_data)
 
 # save both tables
 alchemyEngine = create_engine('postgresql+psycopg2://postgres:1@127.0.0.1/BeeHeroTask', pool_recycle=3600);
-postgreSQLConnection = alchemyEngine.connect();
+
 cities_table = "forecastapp_cities";
 forecast_table = "forecastapp_forecast"
+
+meta = MetaData()
+
+cities = Table(
+   cities_table, meta, 
+   Column('city_id', Integer, primary_key = True), 
+   Column('country', String), 
+   Column('city_name', String),
+   Column('lat', Float),
+   Column('lon', Float),
+)
+
+forecast = Table(
+   forecast_table, meta, 
+   Column('id', Integer, primary_key = True), 
+   Column('f_dt', DateTime), 
+   Column('temp', Float),
+   Column('feels_like', Float),
+   Column('humidity', Float),
+   Column('city_id', Integer, ForeignKey("forecastapp_cities.city_id"), nullable=False), 
+)
+
+meta.create_all(alchemyEngine)
+
+
+
+postgreSQLConnection = alchemyEngine.connect();
+
 
 try:
     cities_df.to_sql(cities_table, postgreSQLConnection, index=False, if_exists='append')
