@@ -6,9 +6,11 @@
 1. Install Docker Desktop
 
 2. Run in root folder 
+
 `docker-compose up -d --build`
 
 3. Check if containers are running
+
 `docker ps`
 
 4. Populate database from Weather API
