@@ -65,5 +65,7 @@ Example: "[{\"rank\":1,\"city_name\":\"Jerusalem\",\"feels_like\":21.12},{\"rank
 
 - Add Airflow instance in docker and make populate_db.py as scheduled task inside Airflow DAG
 
+- Add ingested_time to both tables and support of primary keys for adding new cities into scheduled task inside Airflow DAG
+
 - Add tests
 
